@@ -258,3 +258,30 @@ const Employee = [
     }
 ];
 
+document.addEventListener("DOMContentLoaded", () => {
+  const mainElement = document.querySelector("main");
+
+  Department.forEach(dept => {
+    // Create section container for the department
+    const section = document.createElement("section");
+    
+    // Add department title
+    const heading = document.createElement("h2");
+    heading.textContent = dept.name;
+    section.appendChild(heading);
+
+    // Create unordered list for employees
+    const ul = document.createElement("ul");
+
+    dept.employees.forEach(employeeName => {
+      const li = document.createElement("li");
+      li.textContent = employeeName;
+      ul.appendChild(li);
+    });
+
+    section.appendChild(ul);
+
+    // Inject department section into <main>
+    mainElement.appendChild(section);
+  });
+});
