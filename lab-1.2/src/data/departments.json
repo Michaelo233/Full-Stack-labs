@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Administration",
+    "employees": [
+      "Zoë Robins",
+      "Madeleine Madden"
+    ]
+  },
+  {
+    "name": "Audit",
+    "employees": [
+      "Josha Sadowski",
+      "Kate Fleetwood"
+    ]
+  },
+  {
+    "name": "Banking Operations",
+    "employees": [
+      "Priyanka Bose",
+      "Hammed Animashaun",
+      "Álvaro Morte",
+      "Taylor Napier",
+      "Alan Simmonds"
+    ]
+  },
+  {
+    "name": "Communications",
+    "employees": [
+      "Gil Cardinal",
+      "Richard J. Lewis"
+    ]
+  },
+  {
+    "name": "Corporate Services",
+    "employees": [
+      "Randy Bradshaw",
+      "Tracey Cook",
+      "Lubomir Mykytiuk"
+    ]
+  },
+  {
+    "name": "Facilities",
+    "employees": [
+      "Dakota House",
+      "Lori Lea Okemah",
+      "Renae Morrisseau",
+      "Rick Belcourt"
+    ]
+  },
+  {
+    "name": "Financial Services",
+    "employees": [
+      "Selina Hanusa",
+      "Buffy Gaudry",
+      "Shaneen Ann Fox",
+      "Allan Little",
+      "Danny Rabbit"
+    ]
+  },
+  {
+    "name": "Human Resources",
+    "employees": [
+      "Jesse Ed Azure",
+      "Stacy Da Silva",
+      "Vladimir Valenta",
+      "Samone Sayeses-Whitney",
+      "Paul Coeur"
+    ]
+  },
+  {
+    "name": "Information Technology",
+    "employees": [
+      "Graham Greene",
+      "Sandika Evergreen",
+      "Jennifer Rodriguez"
+    ]
+  },
+  {
+    "name": "IT Technicians",
+    "employees": [
+      "Aiyana Littlebear",
+      "Inara Thunderbird",
+      "Kaya Runningbrook",
+      "Elara Firehawk",
+      "Siona Moonflower",
+      "Kaiyu Greywolf",
+      "Ayawamat Nightwind",
+      "Tala Braveheart",
+      "Iniko Stonebear",
+      "Onatah Redhawk"
+    ]
+  }
+]
