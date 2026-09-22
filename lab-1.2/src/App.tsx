@@ -1,14 +1,16 @@
-import Header from './component/header/header';
-import Footer from './component/footer/footer';
-import { DepartmentSection } from './component/department/departmentSection';
-import departmentsData from './data/departments.json';
+import { Employees } from './components/features/employees/Employees'
+import { Footer } from './components/layout/footer/Footer'
+import { Header } from './components/layout/header/Header'
 
-export default function App() {
+function App() {
+
   return (
     <>
-      <Header />
-      <DepartmentSection departments={departmentsData} />
-      <Footer />
+    <Header />
+    <Employees />
+    <Footer />
     </>
-  );
+  )
 }
+
+export default App
