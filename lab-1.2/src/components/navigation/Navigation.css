@@ -1,0 +1,26 @@
+.navigation {
+  padding: 1rem;
+  text-align: center;
+}
+
+.navigation h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.navigation a {
+  color: inherit;
+}
+
+.navigation a.active {
+  font-weight: 700;
+}
+.navigation a:hover {
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.navigation a:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
