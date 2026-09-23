@@ -1,16 +1,17 @@
+import Layout from './components/layout/Layout'
 import { Employees } from './components/features/employees/Employees'
-import { Footer } from './components/layout/footer/Footer'
-import { Header } from './components/layout/header/Header'
+import { Organization } from './components/features/employeeRoles/employeeRole'
+import { Route , Routes } from 'react-router-dom'
 
 function App() {
-
   return (
-    <>
-    <Header />
-    <Employees />
-    <Footer />
-    </>
+      <Layout>
+        <Routes>
+          <Route path="/employee" element={<Employees />} />
+          <Route path="/organization" element={<Organization />} />
+        </Routes>
+      </Layout>
   )
 }
 
-export default App
+export default App;
