@@ -1,10 +1,11 @@
 import { getAllDepartments, addEmployeeToDepartment } from '../repositories/departmentRepository';
-import type { Department, addEmployeeForm } from '../types/department';
+import type { AddEmployeeForm, Department } from '../types/department';
 
-async function validateFormInput(input: addEmployeeForm): Promise<string[]> {
+async function validateFormInput(input: AddEmployeeForm): Promise<string[]> {
     const errors: string[] = [];
     const departmentName = input.department.trim();
     const firstName = input.employeeFirstName.trim();
+    const lastName = input.employeeLastName.trim();
     const departments = await getAllDepartments();
 
     if (!departments.some(department => department.name === departmentName)) {
@@ -12,6 +13,9 @@ async function validateFormInput(input: addEmployeeForm): Promise<string[]> {
     }
     if (firstName.length < 3) {
         errors.push('First name must be at least 3 characters long.');
+    }
+    if (lastName.length < 3) {
+        errors.push('Last name must be at least 3 characters long.');
     }
 
     return errors;
@@ -22,19 +26,15 @@ export const addEmployeeService = {
         return getAllDepartments();
     },
 
-    async addEmployee(input: addEmployeeForm): Promise<Department> {
+    async addEmployee(input: AddEmployeeForm): Promise<Department> {
         const errors = await validateFormInput(input);
         if (errors.length > 0) {
             throw new Error(errors.join(' '));
         }
 
-        const departmentName = input.department.trim();
-        const firstName = input.employeeFirstName.trim();
-
         return addEmployeeToDepartment({
-            ...input,
-            department: departmentName,
-            employeeFirstName: firstName,
+            department: input.department.trim(),
+            employeeFirstName: input.employeeFirstName.trim(),
             employeeLastName: input.employeeLastName.trim()
         });
     }

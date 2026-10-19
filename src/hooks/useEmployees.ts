@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { addEmployeeService } from "../services/employeeServices";
-import type { addEmployeeForm, Department } from "../types/department";
+import type { AddEmployeeForm, Department } from "../types/department";
 
 export function useEmployees() {
   const [departments, setDepartments] = useState<Department[]>([]);
@@ -40,7 +40,7 @@ export function useEmployees() {
     };
   }, []);
 
-  async function addEmployee(input: addEmployeeForm): Promise<boolean> {
+  async function addEmployee(input: AddEmployeeForm): Promise<boolean> {
     setError(null);
 
     try {
