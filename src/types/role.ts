@@ -5,3 +5,9 @@ export interface Role {
     title: string;
     employee?: Employee;
 }
+
+export interface AddRoleForm {
+    firstName: string;
+    lastName: string;
+    role: string;
+}
