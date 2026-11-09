@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: employees
+      POSTGRES_PASSWORD: employee235
+      POSTGRES_DB: employees
+    ports:
+      - "5432:5432"
+    volumes:
+      - employees_data:/var/lib/postgresql/data
+
+volumes:
+  employees_data:

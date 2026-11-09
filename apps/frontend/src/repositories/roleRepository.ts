@@ -1,52 +1,39 @@
-import { Guid } from "guid-typescript";
-import { roleData } from "../data/roles";
-import type { Role } from "../types/role";
+import type { Role } from "../types/department";
+
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const endpoint = `${baseUrl}/api/roles`;
+
+async function readJSON<T>(
+    response: Response): Promise<T> {
+    if (!response.ok) {
+        throw new Error(`API error: ${response.status})`);
+    }
+    return (await response.json()) as T;
+}
 
 export async function getAllRoles(): Promise<Role[]> {
-  return roleData.map((role) => ({
-    ...role,
-    employee: role.employee ? { ...role.employee } : undefined,
-  }));
+    const response = await fetch(endpoint);
+    return readJSON<Role[]>(response);
 }
 
-export async function createRole(
-  title: string,
-  firstName: string,
-  lastName: string,
-): Promise<Role> {
-  const employee = {
-    id: Guid.create().toString(),
-    firstName,
-    lastName,
-  };
-  const role: Role = {
-    id: Guid.create().toString(),
-    title,
-    employee,
-  };
-  roleData.push(role);
-
-  return { ...role, employee: { ...employee } };
+export async function createRole(input: { role: string; firstName: string; lastName: string }): Promise<Role> {
+    const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(input)
+    });
+    return readJSON<Role>(response);
 }
 
-export async function assignEmployeeToRole(
-  roleId: string,
-  firstName: string,
-  lastName: string,
-): Promise<Role> {
-  const role = roleData.find((candidate) => candidate.id === roleId);
-  if (!role) {
-    throw new Error(`Role with id "${roleId}" not found.`);
-  }
-  if (role.employee) {
-    throw new Error(`Role "${role.title}" is already occupied.`);
-  }
-
-  role.employee = {
-    id: Guid.create().toString(),
-    firstName,
-    lastName,
-  };
-
-  return { ...role, employee: { ...role.employee } };
+export async function assignEmployeeToRole(roleId: string, firstName: string, lastName: string): Promise<Role> {
+    const response = await fetch(`${endpoint}/${roleId}/assign`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ firstName, lastName })
+    });
+    return readJSON<Role>(response);
 }

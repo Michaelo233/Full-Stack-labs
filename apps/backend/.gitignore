@@ -1,0 +1,35 @@
+# Environment variables & database credentials (CRITICAL)
+.env
+.env.*
+!.env.example
+*.env
+
+# Dependencies
+node_modules/
+
+# Build & compilation outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Prisma generated output
+/generated/prisma/
+/prisma/dev.db
+/prisma/dev.db*
+
+# Logs and runtime artifacts
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+coverage/
+.cache/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

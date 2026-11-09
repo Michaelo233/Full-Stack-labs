@@ -3,22 +3,7 @@ import {
   createRole,
   getAllRoles,
 } from "../repositories/roleRepository";
-import type { AddRoleForm, Role } from "../types/role";
-
-function validateRoleInput(input: AddRoleForm): string[] {
-  const errors: string[] = [];
-  if (input.firstName.trim().length < 3) {
-    errors.push("First name must be at least 3 characters long.");
-  }
-  if (!input.lastName.trim()) {
-    errors.push("Last name is required.");
-  }
-  if (!input.role.trim()) {
-    errors.push("Role is required.");
-  }
-
-  return errors;
-}
+import type { AddRoleForm, Role } from "../types/department";
 
 export const roleService = {
   async getAllRoles(): Promise<Role[]> {
@@ -44,6 +29,23 @@ export const roleService = {
       return assignEmployeeToRole(existingRole.id, firstName, lastName);
     }
 
-    return createRole(title, firstName, lastName);
+    return createRole({ role: title, firstName, lastName });
   },
 };
+
+function validateRoleInput(input: AddRoleForm): string[] {
+  const errors: string[] = [];
+
+  if (input.firstName.trim().length < 3) {
+    errors.push("First name must be at least 3 characters long.");
+  }
+  if (!input.lastName.trim()) {
+    errors.push("Last name is required.");
+  }
+  if (!input.role.trim()) {
+    errors.push("Role is required.");
+  }
+
+  return errors;
+}
+
